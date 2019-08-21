@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+body {
+    background-color: #f2eee8;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+h2,
+h4 {
+    font-weight: bold !important;
+}
+
+a:link {
+    color: green;
+    text-decoration: none;
+}
+
+.btn:focus,.btn:active,.btn-lg {
+   outline: none !important;
+   box-shadow: none;
+}
+
+.lato-font {
+    font-family: 'Lato';
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.grey-row {
+    background-color: #f9f8f5;
+}
+
+.grey {
+    color: #9b9b9b;
+}
+
+.container {
+    padding: 0 30px;
+    background-color: #ffffff;
+    border-radius: 0.8%;
+}
+
+.header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.bookItem {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.bookTitle {
+    margin-top: 0px;
+    font-weight: 700;
+}
+
+.bookAuthor {
+    margin: 200px 0 5px;
+}
+
+.bookDescription {
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+div.media-left {
+    padding-right: 18px;
+}
+
+.cover {
+    width: 80px !important;
+    height: 112px !important;
+    border-radius: 10%;
+}

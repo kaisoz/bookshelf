@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="booksList">
+
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <script src="booksList.js"></script>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body ng-controller="booksController" class="lato-font">
+
+  <div class="container">
+
+    <h2>New York Times Best Sellers</h2>
+
+    <div class="row header text-center grey">
+      <div class="col-md-6 text-left">
+        <h4>TITLE</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>PUBLISHED</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>RATING</h4>
+      </div>
+      <div class="col-md-2">
+        <h4>BUY ON</h4>
+      </div>
+    </div>
+
+    <div ng-repeat="book in books">
+
+      <div class="row bookItem text-center" ng-class-odd="'grey-row'">
+        <div class="media col-md-6 text-left" role="button" data-toggle="collapse" data-parent="#accordion"
+          aria-expanded="true" aria-controls="bookDescription-{{book.isbn}}" href="#bookDescription-{{book.isbn}}">
+
+          <div class="media-left">
+            <img class="cover" ng-src="{{ book.cover }}" />
+          </div>
+          <div class="media-body">
+            <h4 class="bookTitle">{{ book.title }}</h4>
+            <span class="bookAuthor grey">{{ book.author }}</span>
+          </div>
+        </div>
+
+        <div class="col-md-2 text-center">{{ book.publishDate }}</div>
+        <div class="col-md-2">{{ book.rating }}</div>
+
+        <div class="col-md-2 text-center">
+          <a ng-repeat="shop in book.shops" target="_blank" href="{{ shop.url }}">{{ shop.name }}</br></a>
+        </div>
+
+        <div id="bookDescription-{{book.isbn}}" class="row collapse bookDescription">
+          <div class="col-md-12">
+            <p class="text-left" ng-bind-html="book.description"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row text-center" style="padding-top: 15px">
+
+      <button type="button" class="btn btn-lg" ng-click="(currentPage != 1) && previousPage()"
+        ng-class="currentPage == 1 ? 'disabled' : ''">
+        <span class="glyphicon glyphicon-menu-left grey" aria-hidden="true"></span>
+      </button>
+
+      Page {{ currentPage }} of {{ totalPages }}
+
+      <button type="button" class="btn btn-lg" ng-click="(currentPage != totalPages) && nextPage()"
+        ng-class="currentPage == totalPages ? 'disabled' : ''">
+        <span class="glyphicon glyphicon-menu-right grey" aria-hidden="true"></span>
+      </button>
+
+    </div>
+</body>
+
+</html>
